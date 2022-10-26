@@ -882,27 +882,24 @@
       ]
     },
     {
-      "categories": ["Other", "Tools"],
-      "description": "Web File Browser which can be used as a middleware or standalone app.",
-      "image": "filebrowser/filebrowser:latest",
-      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/filebrowser.png",
-      "name": "filebrowser",
-      "note": "The default user and password is admin/admin.",
-      "platform": "linux",
-      "ports": ["8082:8082/tcp"],
-      "restart_policy": "unless-stopped",
-      "title": "FileBrowser",
       "type": 1,
+      "title": "File browser",
+      "description": "A web file manager",
+      "note": "Default credentials: admin/admin",
+      "categories": ["filesystem", "storage"],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/filebrowser.png",
+      "image": "filebrowser/filebrowser:latest",
+      "ports": ["80/tcp"],
       "volumes": [
         {
-          "bind": "/portainer/Files/AppData/Config/FileBrowser",
-          "container": "/config"
+          "container": "/data"
         },
         {
-          "bind": "/portainer/Files/AppData/Config",
-          "container": "/myfiles"
+          "container": "/srv"
         }
-      ]
+      ],
+      "command": "--port 80 --database /data/database.db --root /srv"
     },
     {
       "categories": ["Other"],
