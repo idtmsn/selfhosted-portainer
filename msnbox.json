@@ -1939,32 +1939,20 @@
       "type": 3
     },
     {
-      "categories": ["Web", "Proxy"],
-      "description": "Nginx is a web server with a strong focus on high concurrency, performance and low memory usage. It can also act as a reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer and an HTTP cache.",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
-        }
-      ],
-      "image": "linuxserver/nginx:latest",
-      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/nginx-icon.png",
-      "name": "nginx",
-      "platform": "linux",
-      "ports": ["80/tcp", "443/tcp"],
-      "restart_policy": "unless-stopped",
-      "title": "Nginx",
       "type": 1,
+      "title": "Nginx",
+      "description": "High performance web server",
+      "categories": ["webserver"],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/nginx.png",
+      "image": "nginx:latest",
+      "ports": ["80/tcp", "443/tcp"],
       "volumes": [
         {
-          "bind": "/portainer/Files/AppData/Config/Nginx",
-          "container": "/config"
+          "container": "/etc/nginx"
+        },
+        {
+          "container": "/usr/share/nginx/html"
         }
       ]
     },
